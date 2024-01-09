@@ -5,7 +5,8 @@ class Admin extends Sequelize.Model {
     return super.init(
       {
         admin_id: { type: Sequelize.STRING(20), allowNull: false },
-        password: { type: Sequelize.STRING(20), allowNull: false },
+        password: { type: Sequelize.STRING(255), allowNull: false },
+        verified: { type: Sequelize.BOOLEAN, allowNull: false },
       },
       {
         sequelize,

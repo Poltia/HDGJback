@@ -4,8 +4,10 @@ class Blog extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        where: { type: Sequelize.STRING(20), allowNull: false },
         title: { type: Sequelize.STRING(225), allowNull: false },
-        date: { type: Sequelize.STRING(225), allowNull: false, unique: true },
+        subtitle: { type: Sequelize.STRING(225), allowNull: true },
+        date: { type: Sequelize.STRING(225), allowNull: false },
         thumb: { type: Sequelize.STRING(255), allowNull: false },
         link: { type: Sequelize.STRING(225), allowNull: false },
       },
