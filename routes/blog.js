@@ -28,4 +28,24 @@ router.post("/load", async (request, response) => {
   );
 });
 
+// blog 수정
+router.post("/edit", async (request, response) => {
+  const { selected, title, subtitle, date, thumb, link } = request.body;
+  const blog = await Blog.findOne({ where: { link: link } }).then(() => {
+    Blog.update(
+      {
+        where: selected,
+        title: title,
+        subtitle: subtitle,
+        date: date,
+        thumb: thumb,
+        link: link,
+      },
+      { where: { link: link } }
+    )
+      .then(() => response.send("변경되었습니다."))
+      .catch((error) => response.send(error));
+  });
+});
+
 module.exports = router;
